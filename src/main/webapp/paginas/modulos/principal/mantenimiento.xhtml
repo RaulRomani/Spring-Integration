@@ -4,27 +4,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
 <h:head>
-	    	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputStylesheet library="css" name="menu.css"  />
+	    	
 <!-- 	<h:outputStylesheet name="css/bootstrap.min.css" library="css" /> -->
 <!-- 	<h:outputStylesheet library="css" name="#{request.contextPath}/css/bootstrap.min.css"/> -->
-	<meta charset="UTF-8" /> 
+	
 	<title>Mantenimiento</title>
 </h:head>
 <h:body>
 	
+	<ui:include src="/plantilla/cabecera.xhtml"/>
+	
 	<div class="container">
 	
-	<h1 align="center">Mantenimiento de personas</h1>
+	<p:messages />	
+	
 	<div class="row" align="center">
 	<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+	
+	<h1>Mantenimiento de personas</h1>
+	
 	<h:form  acceptcharset="ISO-8859-1" >
-		<!-- 		<p:panelGrid columns="3"> -->	
-		<p:panel header="Registro">
-			<p:messages />
+		<!-- 		<p:panelGrid columns="3"> -->
+		
+		
+		<p:panel>
 
 			<p:inputText id="id" value="#{personaController.persona.id}"
 					type="hidden">
@@ -52,10 +62,12 @@
 				</p:inputText>
 				<p:message for="edad"/>
 
-
+				<p:spacer />
+				<p:spacer >
 				<p:commandButton value="Grabar" update="@form"
 					action="#{personaController.grabar}" ajax="false" validateClient="true" />
 				<p:commandButton value="Limpiar" type="reset" />
+				</p:spacer>
 				<p:spacer />
 
 			</p:panelGrid>

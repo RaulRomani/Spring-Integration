@@ -1,56 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+
 
 <h:head>
-	<title>Ingreso al sistema</title>
+<!--         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+        <h:outputStylesheet library="css" name="menu.css"  />
+        <h:outputStylesheet library="css" name="bootstrap.min.css"  />
 </h:head>
+
 <h:body>
-	<!-- LOGIN -->
-	<h:form>
-		<!-- 		<p:panelGrid columns="3"> -->
-		<p:panel header="Acceso">
-
-			<p:messages />
-
-			<!-- 			<f:facet name="header"> -->
-			<!-- 				<p:row> -->
-			<!-- 					<p:column colspan="2">Accceso</p:column> -->
-			<!-- 				</p:row> -->
-			<!-- 			</f:facet> -->
-			<p:panelGrid columns="2">
-				<p:outputLabel for="usuario"
-					value="#{mensaje['campo.login.usuario']}" />
-				<p:inputText id="usuario" value="#{loginController.usuario.usuario}"
-					required="true" label="Usuario">
-					<f:validateLength minimum="4" maximum="15" />
-				</p:inputText>
-<!-- 				<p:message for="usuario" display="icon" /> -->
-
-				<p:outputLabel for="clave" value="#{mensaje['campo.login.clave']}" />
-				<p:password id="clave" value="#{loginController.usuario.clave}"
-					required="true" label="Clave">
-					<f:validateLength minimum="4" maximum="12" />
-				</p:password>
-<!-- 				<p:message for="clave" display="icon" /> -->
-
-
-				<p:commandButton value="Ingresar" update="@form"
-					action="#{loginController.login}" ajax="false" validateClient="true" />
-				<p:commandButton value="Limpiar" type="reset" />
-<!-- 				<p:spacer /> -->
-
-			</p:panelGrid>
-
-			<!-- 		</p:panelGrid> -->
-		</p:panel>
 
 
 
-	</h:form>
+		<ui:include src="/plantilla/cabecera.xhtml"/>
+
+				
+		<div class="container" align="center" >	 
+			 <!-- LOGIN -->
+			<h:form>
+				<!-- 		<p:panelGrid columns="3"> -->
+				<p:panel header="Acceso">
+		
+					<p:messages />
+		
+								<f:facet name="header">
+									<p:row>
+										<p:column colspan="2">Accceso</p:column>
+									</p:row>
+								</f:facet>
+					<p:panelGrid columns="2">
+						<p:outputLabel for="usuario"
+							value="#{mensaje['campo.login.usuario']}" />
+						<p:inputText id="usuario" value="#{loginController.usuario.usuario}"
+							required="true" label="Usuario">
+							<f:validateLength minimum="4" maximum="15" />
+						</p:inputText>
+		<!-- 				<p:message for="usuario" display="icon" /> -->
+		
+						<p:outputLabel for="clave" value="#{mensaje['campo.login.clave']}" />
+						<p:password id="clave" value="#{loginController.usuario.clave}"
+							required="true" label="Clave">
+							<f:validateLength minimum="4" maximum="12" />
+						</p:password>
+		<!-- 				<p:message for="clave" display="icon" /> -->
+		
+						<p:spacer />
+						<p:spacer >
+							<p:commandButton value="Ingresar" update="@form"
+								action="#{loginController.login}" ajax="false" validateClient="true" />
+							<p:commandButton value="Limpiar" type="reset" />
+						</p:spacer>
+						
+		
+					</p:panelGrid>
+		
+					<!-- 		</p:panelGrid> -->
+				</p:panel>
+		
+		
+		
+			</h:form>
+		        Powered by RomaniDev
+
+        </div>
+    
 </h:body>
 </html>

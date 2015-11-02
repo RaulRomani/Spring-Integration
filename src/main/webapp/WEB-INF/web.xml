@@ -58,4 +58,9 @@
    <env-entry-type>java.lang.String</env-entry-type>
    <env-entry-value>am9kZXRlcHV0b2hhY2tlcg==</env-entry-value>
   </env-entry>  
+<!--   <context-param> -->
+<!--     <param-name>primefaces.THEME</param-name> -->
+<!--     <param-value>none</param-value> -->
+<!--   </context-param> -->
+  
 </web-app>
