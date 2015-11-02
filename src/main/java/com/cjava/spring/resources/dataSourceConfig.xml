@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- DataSource (Desarrollo) -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="user" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+		<property name="driverClass" value="${database.driver}" />
+		<property name="jdbcUrl" value="${database.url}" />
+		<!-- <property name="initialPoolSize" value="0"/> -->
+		<property name="maxPoolSize" value="5" />
+		<property name="minPoolSize" value="5" />
+		<property name="acquireIncrement" value="1" />
+		<property name="acquireRetryAttempts" value="0" />
+	</bean>
+
+	<!-- DataSource (Produccion) -->
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+		<property name="jndiName" value="jdbc/nombreDS"/> <property name="resourceRef" 
+		value="true"/> </bean> -->
+
+</beans>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	    	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+<!-- 	<h:outputStylesheet name="css/bootstrap.min.css" library="css" /> -->
+<!-- 	<h:outputStylesheet library="css" name="#{request.contextPath}/css/bootstrap.min.css"/> -->
+	<meta charset="UTF-8" /> 
+	<title>Mantenimiento</title>
+</h:head>
+<h:body>
+	
+	<div class="container">
+	
+	<h1 align="center">Mantenimiento de personas</h1>
+	<div class="row" align="center">
+	<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+	<h:form  acceptcharset="ISO-8859-1" >
+		<!-- 		<p:panelGrid columns="3"> -->	
+		<p:panel header="Registro">
+			<p:messages />
+
+			<p:inputText id="id" value="#{personaController.persona.id}"
+					type="hidden">
+				</p:inputText>
+				
+			<p:panelGrid columns="3">			
+				<p:outputLabel for="nombre"	value="Nombre" />
+				<p:inputText id="nombre" value="#{personaController.persona.nombres}"
+					required="true" label="Nombre">
+					<f:validateLength minimum="3" maximum="20" />
+				</p:inputText>
+				<p:message for="nombre"/>
+
+				<p:outputLabel for="apellido" value="Apellidos" />
+				<p:inputText id="apellido" value="#{personaController.persona.apellidos}"
+					required="true" label="Apellidos">
+					<f:validateLength maximum="30" />
+				</p:inputText>
+				<p:message for="apellido"/>
+				
+				<p:outputLabel for="edad" value="Edad" />
+				<p:inputText id="edad" value="#{personaController.persona.edad}"
+					required="true" label="Edad">
+					<f:validateLength maximum="3" />
+				</p:inputText>
+				<p:message for="edad"/>
+
+
+				<p:commandButton value="Grabar" update="@form"
+					action="#{personaController.grabar}" ajax="false" validateClient="true" />
+				<p:commandButton value="Limpiar" type="reset" />
+				<p:spacer />
+
+			</p:panelGrid>
+
+			<!-- 		</p:panelGrid> -->
+		</p:panel>	
+	</h:form>
+	</div>
+	</div>
+
+	
+	<h:form>
+		<p:dataTable var="persona" value="#{personaController.personas}" >
+		     
+		    <p:column headerText="Nombre">
+		        <h:outputText value="#{persona.nombres}" />
+		    </p:column>
+		 
+		    <p:column headerText="Apellido">
+		        <h:outputText value="#{persona.apellidos}" />
+		    </p:column>
+		 
+		    <p:column headerText="Edad">
+		        <h:outputText value="#{persona.edad}" />
+		    </p:column>
+		    
+		    <p:column headerText="Acción">
+			    <h:commandLink value="eliminar" action="#{personaController.eliminar(persona)}"/>
+		        <br></br>
+		        <h:commandLink value="editar" action="#{personaController.cargar(persona)}"/>
+		    </p:column>
+		</p:dataTable>
+	</h:form>
+	
+	</div>
+	
+
+  
+</h:body>
+</html>

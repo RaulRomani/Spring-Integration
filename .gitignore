@@ -1,0 +1,24 @@
+######################
+# Windows
+######################
+ 
+# Windows image file caches
+Thumbs.db 
+ 
+# Folder config file
+Desktop.ini
+
+######################
+# Maven
+######################
+
+.classpath
+.project
+.settings/
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
