@@ -2,7 +2,6 @@ package com.cjava.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.cjava.spring.util.Properties;
 
 @Service
@@ -10,20 +9,12 @@ public class ServiceFactory {
 
 	@Autowired
 	private Properties properties;
-
 	@Autowired
-	private UsuarioService usuarioService;
-	
+	private EmpleadoService empleadoService;
 	@Autowired
-	private PersonaService personaService;
-
-	public PersonaService getPersonaService() {
-		return personaService;
-	}
-
-	public void setPersonaService(PersonaService personaService) {
-		this.personaService = personaService;
-	}
+	private ArticuloService articuloService;
+	@Autowired
+	private ClienteService clienteService;
 
 	public Properties getProperties() {
 		return properties;
@@ -33,12 +24,31 @@ public class ServiceFactory {
 		this.properties = properties;
 	}
 
-	public UsuarioService getUsuarioService() {
-		return usuarioService;
+	public EmpleadoService getEmpleadoService() {
+		return empleadoService;
 	}
 
-	public void setUsuarioService(UsuarioService usuarioService) {
-		this.usuarioService = usuarioService;
+	public void setEmpleadoService(EmpleadoService empleadoService) {
+		this.empleadoService = empleadoService;
 	}
+
+	public ArticuloService getArticuloService() {
+		return articuloService;
+	}
+
+	public void setArticuloService(ArticuloService articuloService) {
+		this.articuloService = articuloService;
+	}
+
+	public ClienteService getClienteService() {
+		return clienteService;
+	}
+
+	public void setClienteService(ClienteService clienteService) {
+		this.clienteService = clienteService;
+	}
+	
+
+	
 
 }

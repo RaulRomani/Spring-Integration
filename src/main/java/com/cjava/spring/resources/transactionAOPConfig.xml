@@ -28,6 +28,7 @@
 				propagation="REQUIRED" rollback-for="Throwable" />
 			<tx:method name="eliminar*" read-only="false" propagation="REQUIRED"
 				rollback-for="Throwable" />
+				
 		</tx:attributes>
 
 	</tx:advice>

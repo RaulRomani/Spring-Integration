@@ -36,16 +36,16 @@
 									</p:row>
 								</f:facet>
 					<p:panelGrid columns="2">
-						<p:outputLabel for="usuario"
+						<p:outputLabel for="empleado"
 							value="#{mensaje['campo.login.usuario']}" />
-						<p:inputText id="usuario" value="#{loginController.usuario.usuario}"
-							required="true" label="Usuario">
+						<p:inputText id="empleado" value="#{loginController.empleado.usuario}"
+							required="true" label="Empleado">
 							<f:validateLength minimum="4" maximum="15" />
 						</p:inputText>
-		<!-- 				<p:message for="usuario" display="icon" /> -->
+		<!-- 				<p:message for="empleado" display="icon" /> -->
 		
 						<p:outputLabel for="clave" value="#{mensaje['campo.login.clave']}" />
-						<p:password id="clave" value="#{loginController.usuario.clave}"
+						<p:password id="clave" value="#{loginController.empleado.clave}"
 							required="true" label="Clave">
 							<f:validateLength minimum="4" maximum="12" />
 						</p:password>
@@ -58,7 +58,7 @@
 							<p:commandButton value="Limpiar" type="reset" />
 						</p:spacer>
 						
-		
+
 					</p:panelGrid>
 		
 					<!-- 		</p:panelGrid> -->

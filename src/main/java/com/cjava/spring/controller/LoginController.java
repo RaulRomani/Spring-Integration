@@ -1,17 +1,11 @@
 package com.cjava.spring.controller;
 
-import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.cjava.spring.entity.Persona;
-import com.cjava.spring.entity.Usuario;
-import com.cjava.spring.service.PersonaService;
+import com.cjava.spring.entity.Empleado;
 import com.cjava.spring.service.ServiceFactory;
 import com.cjava.spring.util.Constantes;
 import com.cjava.spring.util.WebUtil;
@@ -29,7 +23,7 @@ public class LoginController {
 
 	private String paginaResultado;
 
-	private Usuario usuario;
+	private Empleado empleado;
 		
 	
 	
@@ -39,13 +33,13 @@ public class LoginController {
 		System.out.println("loginController");
 		facesContext = WebUtil.getFacesContextCurrentInstance();
 		System.out.println(facesContext);
-		usuario = new Usuario();
+		empleado = new Empleado();
 	}
 
 	public String login() {
-		usuario = serviceFactory.getUsuarioService().buscarLogin(usuario);
+		empleado = serviceFactory.getEmpleadoService().buscarLogin(empleado);
 		
-		if (usuario == null) {
+		if (empleado == null) {
 			facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					WebUtil.getMensaje("validacion.login.incorrecto"),
 					Constantes.VACIO);
@@ -53,9 +47,9 @@ public class LoginController {
 		} else {
 			facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
 					WebUtil.getMensaje("validacion.login.correcto",
-							usuario.getUsuario()), Constantes.VACIO);
+							empleado.getNombre()), Constantes.VACIO);
 			WebUtil.keepMessages();
-			paginaResultado = "/paginas/modulos/principal/mantenimiento"
+			paginaResultado = "/paginas/modulos/principal/articulos"
 					+ Constantes.REDIRECT_JSF;
 		}
 
@@ -64,12 +58,12 @@ public class LoginController {
 	}
 
 	
-	public Usuario getUsuario() {
-		return usuario;
+	public Empleado getEmpleado() {
+		return empleado;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 
