@@ -38,23 +38,23 @@
 					<p:panelGrid columns="2">
 						<p:outputLabel for="empleado"
 							value="#{mensaje['campo.login.usuario']}" />
-						<p:inputText id="empleado" value="#{loginController.empleado.usuario}"
+						<p:inputText id="empleado" value="#{ventaController.empleado.usuario}"
 							required="true" label="Empleado">
 							<f:validateLength minimum="4" maximum="15" />
 						</p:inputText>
 		<!-- 				<p:message for="empleado" display="icon" /> -->
 		
 						<p:outputLabel for="clave" value="#{mensaje['campo.login.clave']}" />
-						<p:password id="clave" value="#{loginController.empleado.clave}"
+						<p:password id="clave" value="#{ventaController.empleado.clave}"
 							required="true" label="Clave">
 							<f:validateLength minimum="4" maximum="12" />
 						</p:password>
 		<!-- 				<p:message for="clave" display="icon" /> -->
-		
+
 						<p:spacer />
 						<p:spacer >
 							<p:commandButton value="Ingresar" update="@form"
-								action="#{loginController.login}" ajax="false" validateClient="true" />
+								action="#{ventaController.login}" ajax="false" validateClient="true" />
 							<p:commandButton value="Limpiar" type="reset" />
 						</p:spacer>
 						

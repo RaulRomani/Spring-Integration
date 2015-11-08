@@ -3,6 +3,11 @@ package com.cjava.spring.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.cjava.spring.entity.CarritoItem;
+
+@Service
 public class Carrito {
 
 	private Long cliente;

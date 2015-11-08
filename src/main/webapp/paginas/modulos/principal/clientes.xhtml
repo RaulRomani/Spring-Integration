@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputStylesheet library="css" name="menu.css"  />	
+	<title>Mantenimiento</title>
+</h:head>
+<h:body>
+	
+	<ui:include src="/plantilla/cabecera.xhtml"/>
+	
+	<div class="container">
+	
+	<p:messages />	
+	
+	<div class="row" align="center">
+	<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+	
+	<h1>Mantenimiento de Clientes</h1>
+	
+	<h:form  acceptcharset="ISO-8859-1" >
+		<p:panel>
+
+			<p:inputText id="id" value="#{clienteController.cliente.id}"
+					type="hidden">
+				</p:inputText>
+				
+			<p:panelGrid columns="3">			
+				<p:outputLabel for="nombre"	value="Nombre" />
+				<p:inputText id="nombre" value="#{clienteController.cliente.nombre}"
+					required="true" label="Nombre">
+					<f:validateLength minimum="3" maximum="20" />
+				</p:inputText>
+				<p:message for="nombre"/>
+
+				<p:outputLabel for="tipo" value="Tipo" />
+				<p:inputText id="tipo" value="#{clienteController.cliente.tipo}"
+					required="true" label="Tipo">
+					<f:validateLength maximum="30" />
+				</p:inputText>
+				<p:message for="tipo"/>
+
+				<p:spacer />
+				<p:spacer >
+				<p:commandButton value="Grabar" update="@form"
+					action="#{clienteController.grabar}" ajax="false" validateClient="true" />
+				<p:commandButton value="Limpiar" type="reset" />
+				</p:spacer>
+				<p:spacer />
+
+			</p:panelGrid>
+		</p:panel>	
+	</h:form>
+	</div>
+	</div>
+
+	
+	<h:form>
+		<p:dataTable var="cliente" value="#{clienteController.clientes}" >    
+		 
+		    <p:column headerText="Nombre">
+		        <h:outputText value="#{cliente.nombre}" />
+		    </p:column>
+		    
+		    <p:column headerText="Tipo">
+		        <h:outputText value="#{cliente.tipo}" />
+		    </p:column>
+		    
+		    <p:column headerText="Acción">
+			    <h:commandLink value="eliminar" action="#{clienteController.eliminar(cliente)}"/>
+		        <br></br>
+		        <h:commandLink value="editar" action="#{clienteController.cargar(cliente)}"/>
+		    </p:column>
+		</p:dataTable>
+	</h:form>
+	</div>
+	<ui:include src="/plantilla/footer.xhtml"/>
+</h:body>
+</html>

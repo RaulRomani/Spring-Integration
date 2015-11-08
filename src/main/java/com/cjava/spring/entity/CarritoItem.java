@@ -1,4 +1,4 @@
-package com.cjava.spring.service;
+package com.cjava.spring.entity;
 
 public class CarritoItem {
 

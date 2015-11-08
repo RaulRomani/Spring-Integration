@@ -28,7 +28,7 @@
 	<div class="row" align="center">
 	<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
 	
-	<h1>Mantenimiento de artículos</h1>
+	<h1>Mantenimiento de Personal</h1>
 	
 	<h:form  acceptcharset="ISO-8859-1" >
 		<!-- 		<p:panelGrid columns="3"> -->
@@ -36,43 +36,36 @@
 		
 		<p:panel>
 
-			<p:inputText id="id" value="#{articuloController.articulo.id}"
+			<p:inputText id="id" value="#{empleadoController.empleado.id}"
 					type="hidden">
 				</p:inputText>
 				
 			<p:panelGrid columns="3">			
-				<p:outputLabel for="codigo"	value="Código" />
-				<p:inputText id="codigo" value="#{articuloController.articulo.codigo}"
-					required="true" label="Código">
+				<p:outputLabel for="nombre"	value="Nombre" />
+				<p:inputText id="nombre" value="#{empleadoController.empleado.nombre}"
+					required="true" label="Nombre">
 					<f:validateLength minimum="3" maximum="20" />
 				</p:inputText>
-				<p:message for="codigo"/>
+				<p:message for="nombre"/>
 
-				<p:outputLabel for="nombre" value="Nombre" />
-				<p:inputText id="nombre" value="#{articuloController.articulo.nombre}"
-					required="true" label="Nombre">
+				<p:outputLabel for="usuario" value="Usuario" />
+				<p:inputText id="usuario" value="#{empleadoController.empleado.usuario}"
+					required="true" label="Usuario">
 					<f:validateLength maximum="30" />
 				</p:inputText>
-				<p:message for="nombre"/>
+				<p:message for="usuario"/>
 				
-				<p:outputLabel for="precio" value="Precio" />
-				<p:inputText id="precio" value="#{articuloController.articulo.precio}"
-					required="true" label="Precio">
+				<p:outputLabel for="clave" value="Clave" />
+				<p:inputText id="clave" value="#{empleadoController.empleado.clave}"
+					required="true" label="Clave">
 					<f:validateLength maximum="7" />
 				</p:inputText>
-				<p:message for="precio"/>
+				<p:message for="clave"/>
 				
-				<p:outputLabel for="stock" value="Stock" />
-				<p:inputText id="stock" value="#{articuloController.articulo.stock}"
-					required="true" label="Stock">
-					<f:validateLength maximum="6" />
-				</p:inputText>
-				<p:message for="stock"/>
-
 				<p:spacer />
 				<p:spacer >
 				<p:commandButton value="Grabar" update="@form"
-					action="#{articuloController.grabar}" ajax="false" validateClient="true" />
+					action="#{empleadoController.grabar}" ajax="false" validateClient="true" />
 				<p:commandButton value="Limpiar" type="reset" />
 				</p:spacer>
 				<p:spacer />
@@ -87,28 +80,25 @@
 
 	
 	<h:form>
-		<p:dataTable var="articulo" value="#{articuloController.articulos}" >
+		<p:dataTable var="empleado" value="#{empleadoController.empleados}" >
 		     
-		    <p:column headerText="Código">
-		        <h:outputText value="#{articulo.codigo}" />
-		    </p:column>
 		 
 		    <p:column headerText="Nombre">
-		        <h:outputText value="#{articulo.nombre}" />
-		    </p:column>
-		 
-		    <p:column headerText="Precio">
-		        <h:outputText value="#{articulo.precio}" />
+		        <h:outputText value="#{empleado.nombre}" />
 		    </p:column>
 		    
-		    <p:column headerText="Stock">
-		        <h:outputText value="#{articulo.stock}" />
+		    <p:column headerText="Usuario">
+		        <h:outputText value="#{empleado.usuario}" />
+		    </p:column>
+		 
+		    <p:column headerText="Clave">
+		        <h:outputText value="#{empleado.clave}" />
 		    </p:column>
 		    
 		    <p:column headerText="Acción">
-			    <h:commandLink value="eliminar" action="#{articuloController.eliminar(articulo)}"/>
+			    <h:commandLink value="eliminar" action="#{empleadoController.eliminar(empleado)}"/>
 		        <br></br>
-		        <h:commandLink value="editar" action="#{articuloController.cargar(articulo)}"/>
+		        <h:commandLink value="editar" action="#{empleadoController.cargar(empleado)}"/>
 		    </p:column>
 		</p:dataTable>
 	</h:form>

@@ -15,6 +15,9 @@ public class ServiceFactory {
 	private ArticuloService articuloService;
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private VentaService ventaService;
 
 	public Properties getProperties() {
 		return properties;
@@ -47,6 +50,16 @@ public class ServiceFactory {
 	public void setClienteService(ClienteService clienteService) {
 		this.clienteService = clienteService;
 	}
+
+	public VentaService getVentaService() {
+		return ventaService;
+	}
+
+	public void setVentaService(VentaService ventaService) {
+		this.ventaService = ventaService;
+	}
+	
+	
 	
 
 	

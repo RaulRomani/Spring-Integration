@@ -1,28 +1,47 @@
-//package com.cjava.spring.service;
-//
-//
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.sql.Statement;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import com.cjava.spring.entity.Cliente;
-//import com.cjava.spring.entity.Empleado;
-//
-//
-//public class VentaService {
-//
-//	//consultar clientes,, articulos, articulo
-//	
-//	public void grabarVenta(Carrito carrito) throws Exception{
-//		Connection cn = null;
-//		try {
-//			cn = AccesoDB.getConnection();
-//			cn.setAutoCommit(false);
-//			// Grabar la cabecera
+package com.cjava.spring.service;
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cjava.spring.entity.Articulo;
+import com.cjava.spring.entity.Cliente;
+import com.cjava.spring.entity.Empleado;
+import com.cjava.spring.util.HibernateBaseDao;
+
+@Service
+public class VentaService {
+
+	//consultar clientes,, articulos, articulo
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public void grabarVenta(Carrito carrito) throws Exception{
+		
+//		HibernateBaseDao hibernate = new HibernateBaseDao();
+//		Session session = hibernate.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
+		
+		//Testing transaction with AOP, It's works
+		Articulo articulo = new Articulo("ART_08","Microfono",  100D,20L);
+		session.persist(articulo);
+		Cliente cliente = new Cliente("ART_08","juridica");
+		session.persist(cliente);
+		throw new Exception();
+		
+		
+		
 //			String query = "insert into venta(cli_id,ven_fecha,ven_subtotal,"
 //					  + "ven_impuesto,ven_total,emp_id) values(?,sysdate(),?,?,?,?)";
 //			PreparedStatement pstm = cn.prepareStatement(query);
@@ -67,20 +86,6 @@
 //				pstm.setDouble(5, i.getSubtotal());
 //				pstm.executeUpdate();
 //			}
-//			
-//			cn.commit();
-//			pstm.close();
-//		} catch (Exception e) {
-//			try {
-//				cn.rollback();
-//			} catch (Exception e1) {
-//			}
-//			throw e;
-//		} finally {
-//			try {
-//				cn.close();
-//			} catch (Exception e2) {
-//			}
-//		}
-//	}
-//}
+		
+	}
+}

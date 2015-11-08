@@ -23,6 +23,7 @@ public class LoginController {
 
 	private String paginaResultado;
 
+	@Autowired
 	private Empleado empleado;
 		
 	
@@ -33,7 +34,7 @@ public class LoginController {
 		System.out.println("loginController");
 		facesContext = WebUtil.getFacesContextCurrentInstance();
 		System.out.println(facesContext);
-		empleado = new Empleado();
+//		empleado = new Empleado();
 	}
 
 	public String login() {
@@ -49,7 +50,7 @@ public class LoginController {
 					WebUtil.getMensaje("validacion.login.correcto",
 							empleado.getNombre()), Constantes.VACIO);
 			WebUtil.keepMessages();
-			paginaResultado = "/paginas/modulos/principal/articulos"
+			paginaResultado = "/paginas/modulos/principal/ventas"
 					+ Constantes.REDIRECT_JSF;
 		}
 

@@ -27,18 +27,21 @@
 	                
 	                <li class='has-sub'><a href="#"><span>Mantenimiento</span></a>
 	                    <ul>
-	                        <li class="last"><a href="#"><span>Clientes</span></a></li>
-	                        <li class="last"><a href="#"><span>Personal</span></a></li>
-	                        <li class="last"><a href="#"><span>Productos</span></a></li>
+	                        <li class="last"><a href="#{root}paginas/modulos/principal/clientes.xhtml"><span>Clientes</span></a></li>
+	                        <li class="last"><a href="#{root}paginas/modulos/principal/empleados.xhtml"><span>Personal</span></a></li>
+	                        <li class="last"><a href="#{root}paginas/modulos/principal/articulos.xhtml"><span>Artículos</span></a></li>
 	                    </ul>
-	                </li> 
-	
-	                <!--<li class='last'><a href="<c:url value='/contacto.jsp'/>"><span>Contacto</span></a></li>-->
-	
+	                </li> 	
 	            </ul>
 	        </div>
+	        
+	        <td align="right">
+				<p>Usuario: <h:outputText value="#{ventaController.empleado.nombre}" /> </p>
+				<p> <h:commandLink value="Salir" action="#{ventaController.doSalir}"/> </p>
+			</td>
 			
 		</h:form>
+						
 	</ui:composition>
 
 </html>

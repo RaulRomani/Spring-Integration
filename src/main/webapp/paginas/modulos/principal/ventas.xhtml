@@ -3,17 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
 		xmlns:f="http://java.sun.com/jsf/core">
 
-	<body>
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputStylesheet library="css" name="menu.css"  />
+	<title>Ventas</title>
+</h:head>
+<h:body>
 
 		<ui:include src="/plantilla/cabecera.xhtml"/>
-	
+		<h2>Ventas</h2>
+		<p:messages />
+		
 		<h:form>
-			<h:outputLabel value="Cliente"/>
-			<h:selectOneMenu value="#{ventaBean.idcliente}">
-				<f:selectItems value="#{ventaBean.listaClientes}"/>
-			</h:selectOneMenu>
+			<p:outputLabel for="cliente" value="Cliente" />
+			<p:selectOneMenu id="cliente" value="#{ventaController.idCliente}">
+				<f:selectItem itemLabel="Seleccione" itemValue="" />
+				<f:selectItems  value="#{ventaController.clientes}"/>
+			</p:selectOneMenu>
+			
+			
 			<table>
 				<tr>
 					<td>Articulo</td>
@@ -24,15 +35,16 @@
 				</tr>
 				<tr>
 					<td>
-						<h:selectOneMenu
-							value="#{ventaBean.idArticulo}"
+						<h:selectOneMenu 
+							value="#{ventaController.idArticulo}"
 							onchange="submit();"
-							valueChangeListener="#{ventaBean.modificarPrecio}">
-							<f:selectItems value="#{ventaBean.listaArticulos}"/>
+							valueChangeListener="#{ventaController.modificarPrecio}">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems  value="#{ventaController.articulos}"/>
 						</h:selectOneMenu>
 					</td>
 					<td>
-						<h:outputText value="#{ventaBean.precio}">
+						<h:outputText value="#{ventaController.precio}">
 							<f:convertNumber pattern="###,##0.00"/>
 						</h:outputText>
 					</td>
@@ -41,21 +53,22 @@
 							maxlength="5"
 							size="5"
 							onchange="submit();"
-							valueChangeListener="#{ventaBean.modificarCantidad}"
-							value="#{ventaBean.cant}"/>
+							valueChangeListener="#{ventaController.modificarCantidad}"
+							value="#{ventaController.cant}"/>
 					</td>
 					<td>
-						<h:outputText value="#{ventaBean.subtotal}">
+						<h:outputText value="#{ventaController.subtotal}">
 							<f:convertNumber pattern="###,##0.00"/>
 						</h:outputText>
 					</td>
 					<td rowspan="2">
-						<h:commandButton value="Agregar" action="#{ventaBean.doAgregarItem}"/>
+						<h:commandButton value="Agregar" action="#{ventaController.doAgregarItem}"/>
 					</td>
 				</tr>
 			</table>
-
-			<h:dataTable border="1" value="#{ventaBean.carrito.items}" var="r">
+			
+			
+			<h:dataTable border="1" value="#{ventaController.carrito.items}" var="r">
 				
 				<h:column>
 					<f:facet name="header">
@@ -96,35 +109,46 @@
 					<f:facet name="header">
 						<h:outputText value="Acción" />
 					</f:facet>
-					<h:commandLink value="Eliminar" action="#{ ventaBean.doEliminarItem( r.id ) }" />
+<!-- 					<h:commandLink value="Eliminar" action="#{ ventaController.doEliminarItem( r.id ) }" /> -->
 				</h:column>
 			</h:dataTable>
-
+				
+		
+		
 			<h:panelGrid columns="3">
 
 				<h:outputLabel value="Importe:"/>
-				<h:outputText value="#{ventaBean.carrito.importe}">
+				<h:outputText value="#{ventaController.carrito.importe}">
 					<f:convertNumber pattern="###,##0.00"/>
 				</h:outputText>
 				<h:outputText />
 
 				<h:outputLabel value="Impuesto:"/>
-				<h:outputText value="#{ventaBean.carrito.impuesto}">
+				<h:outputText value="#{ventaController.carrito.impuesto}">
 					<f:convertNumber pattern="###,##0.00"/>
 				</h:outputText>
 				<h:outputText />
 
 				<h:outputLabel value="Total:"/>
-				<h:outputText value="#{ventaBean.carrito.total}">
+				<h:outputText value="#{ventaController.carrito.total}">
 					<f:convertNumber pattern="###,##0.00"/>
 				</h:outputText>
-				<h:commandButton value="Grabar Pedido" action="#{ventaBean.doGrabar}"/>
+				<h:commandButton value="Grabar Pedido" action="#{ventaController.doGrabar}"/>
 				
 			</h:panelGrid>
 		</h:form>
+	
+<!-- 		<h:form> -->
 
-		<h:outputText value="#{ventaBean.mensaje}"/>
 
 
-	</body>
+
+
+
+<!-- 		</h:form> -->
+
+<!-- 		<h:outputText value="#{ventaBean.mensaje}"/> -->
+
+	<ui:include src="/plantilla/footer.xhtml"/>
+</h:body>
 </html>
