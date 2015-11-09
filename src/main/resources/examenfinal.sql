@@ -95,26 +95,22 @@ ADD FOREIGN KEY FK_VENTA_EMPLEADO (emp_id) REFERENCES EMPLEADO (emp_id);
 
 
 INSERT INTO ARTICULO(art_codigo,art_nombre,art_precio,art_stock) VALUES
-('ART_01','LAPTOP',2600.0,50),
-('ART_02','LAVADORA',1567.0,80),
-('ART_03','REFRIGERADORA',1437.0,85),
-('ART_04','PC COMPATIBLE',1799.0,150),
-('ART_05','IMPRESORA',480.0,250),
-('ART_06','COCINA ELECTRICA',1499.0,75),
-('ART_07','HORNO MICROHONDA',289.0,350);
+('ART_01','Menu Familiar',150.0,25),
+('ART_02','Ceviche',30.0,30),
+('ART_03','Chicharron',15.0,40),
+('ART_04','Chicha Morada',5.0,80),
 
 INSERT INTO CLIENTE(cli_nombre,cli_tipo) VALUES
 ('Larriega Oscar','juridica'),
-('Falla Alfonso','narural'),
+('Falla Alfonso','natural'),
 ('Escobedo Antony','juridica'),
-('Huanay Omar','narural'),
+('Huanay Omar','natural'),
 ('Luna David','juridica'),
-('Coronel Gustavo','narural');
+('Coronel Gustavo','natural');
 
 INSERT INTO EMPLEADO(emp_nombre,emp_usuario,emp_clave)
 VALUES
-('Raúl Romaní Flores','admin','admin'),
-('adelayda herrera','user','user');
+('Raúl Romaní Flores','admin','admin');
   
   
   

@@ -15,8 +15,10 @@
 </h:head>
 <h:body>
 	
-	<ui:include src="/plantilla/cabecera.xhtml"/>
-	
+	<ui:include src="/plantilla/cabeceraVenta.xhtml"/>
+	<h:form>
+		<p> <h:commandLink value="Salir" action="#{ventaController.doSalir}"/> </p>
+	</h:form>
 	<div class="container">
 	
 	<p:messages />	

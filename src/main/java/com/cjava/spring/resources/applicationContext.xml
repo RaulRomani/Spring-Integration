@@ -18,5 +18,8 @@
 	<import resource="classpath:com/cjava/spring/resources/hibernateConfig.xml" />
 
 	<import resource="classpath:com/cjava/spring/resources/transactionAOPConfig.xml" />
+	
+	<bean id="boleta" class="com.cjava.spring.view.Boleta" />
+	<bean id="factura" class="com.cjava.spring.view.Factura" />
 
 </beans>

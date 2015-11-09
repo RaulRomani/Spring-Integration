@@ -12,6 +12,8 @@ public class Carrito {
 
 	private Long cliente;
 	private Long empleado;
+//	private Double consumo;
+//	private Double descuento;
 	private List<CarritoItem> items;
 
 	public Carrito() {
@@ -33,9 +35,16 @@ public class Carrito {
 	public void setEmpleado(Long empleado) {
 		this.empleado = empleado;
 	}
-
-
-
+	
+	public Double getConsumo() {
+		Double t = 0.0;
+		for (CarritoItem i : items) {
+			t += i.getSubtotal();
+		}
+		return t;
+	}
+	
+	
 	public List<CarritoItem> getItems() {
 		return items;
 	}
@@ -65,12 +74,51 @@ public class Carrito {
 		}
 	}
 
-	public Double getTotal() {
+	public Double getTotal() {		
 		Double t = 0.0;
 		for (CarritoItem i : items) {
 			t += i.getSubtotal();
 		}
-		return t;
+		Double descuento = 0.0;
+		Double importe = t / 1.18;
+		Double total = t;
+		
+		if(importe >= 0 && importe <= 100)
+			descuento = total * 0.00;
+		if(importe >= 101 && importe <= 200)
+			descuento = total * 0.03;
+		if(importe >= 201 && importe <= 300)
+			descuento = total * 0.05;
+		if(importe >= 301 && importe <= 400)
+			descuento = total * 0.07;
+		if(importe >= 401 && importe <= 500)
+			descuento = total * 0.10;
+		if(importe >= 501)
+			descuento = total * 0.15;
+		return t - descuento;
+	}
+	public Double getDescuento() {		
+		Double t = 0.0;
+		for (CarritoItem i : items) {
+			t += i.getSubtotal();
+		}
+		Double descuento = 0.0;
+		Double importe = t / 1.18;
+		Double total = t;
+		
+		if(importe >= 0 && importe <= 100)
+			descuento = total * 0.00;
+		if(importe >= 101 && importe <= 200)
+			descuento = total * 0.03;
+		if(importe >= 201 && importe <= 300)
+			descuento = total * 0.05;
+		if(importe >= 301 && importe <= 400)
+			descuento = total * 0.07;
+		if(importe >= 401 && importe <= 500)
+			descuento = total * 0.10;
+		if(importe >= 501 )
+			descuento = total * 0.15;
+		return descuento;
 	}
 
 	public Double getImporte() {

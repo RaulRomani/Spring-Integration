@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core" >
+
+	<ui:composition>
+		<c:set var="root" value="#{request.contextPath}/" />
+		<h:form>
+			<div>
+				<table width="100%">
+					<tr>
+						<td>
+							<a href="#{root}paginas/modulos/principal/ventas.xhtml">
+								<h:graphicImage value="/resources/images/logoCjava.jpg" height="80" width="80"/>
+								<h2 class="texto">Restaurante El Buen Sabor</h2>
+							</a>>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id='cssmenu'>
+	            <ul>
+<!-- 	                <li><a href="#{root}paginas/modulos/principal/venta.xhtml"><span>Inicio</span></a></li> -->
+	                <li><a href="#{root}paginas/modulos/principal/ventas.xhtml"><span>Venta</span></a></li>
+	                
+	                <li class='has-sub'><a href="#"><span>Mantenimiento</span></a>
+	                    <ul>
+	                        <li class="last"><a href="#{root}paginas/modulos/principal/clientes.xhtml"><span>Clientes</span></a></li>
+	                        <li class="last"><a href="#{root}paginas/modulos/principal/empleados.xhtml"><span>Personal</span></a></li>
+	                        <li class="last"><a href="#{root}paginas/modulos/principal/articulos.xhtml"><span>Artículos</span></a></li>
+	                    </ul>
+	                </li> 	
+	            </ul>
+	        </div>
+	        
+	        <td align="right">
+				<p>Usuario: <h:outputText value="#{ventaController.empleado.nombre}" /> </p>
+				
+			</td>
+			
+		</h:form>
+						
+	</ui:composition>
+
+</html>
+

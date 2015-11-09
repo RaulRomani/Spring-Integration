@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputStylesheet library="css" name="menu.css"  />
+	<title>Boleta</title>
+</h:head>
+<h:body>
+
+		<ui:include src="/plantilla/cabeceraVenta.xhtml"/>
+		<h:form>
+		<p> <h:commandLink value="Salir" action="#{ventaController.doVolver}"/> </p>
+		</h:form>
+		<h1>Comprobante : Boleta</h1>
+		<p:messages />
+		
+		<h:panelGrid columns="3">
+
+				<h:outputLabel value="Consumo:"/>
+				<h:outputText value="#{ventaController.carrito.consumo}">
+					<f:convertNumber pattern="###,##0.00"/>
+				</h:outputText>
+				<h:outputText />
+				
+				<h:outputLabel value="Descuento:"/>
+				<h:outputText value="#{ventaController.carrito.descuento}">
+					<f:convertNumber pattern="###,##0.00"/>
+				</h:outputText>
+				<h:outputText />
+
+				<h:outputLabel value="Impuesto:"/>
+				<h:outputText value="#{ventaController.carrito.impuesto}">
+					<f:convertNumber pattern="###,##0.00"/>
+				</h:outputText>
+				<h:outputText />
+
+				<h:outputLabel value="Total:"/>
+				<h:outputText value="#{ventaController.carrito.total}">
+					<f:convertNumber pattern="###,##0.00"/>
+				</h:outputText>
+			</h:panelGrid>
+		
+	<ui:include src="/plantilla/footer.xhtml"/>
+</h:body>
+</html>

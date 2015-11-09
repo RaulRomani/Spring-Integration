@@ -19,7 +19,7 @@ public class EmpleadoTest extends AbstractBaseUnitTest {
 	@Autowired
 	private ServiceFactory serviceFactory;
 		
-	@Test
+//	@Test
 	public void registrar() {
 		//En el mapeo hibernate mediante anotaciones esta id automatico, ERROR SI SE PONE
 //		Long id = new Long(2);
@@ -47,7 +47,7 @@ public class EmpleadoTest extends AbstractBaseUnitTest {
 		empleadoService.eliminar(3L);
 	}
 	
-//	@Test
+	@Test
 	public void listar() throws Exception {
 		List<Empleado> empleados = empleadoService.listar();
 		

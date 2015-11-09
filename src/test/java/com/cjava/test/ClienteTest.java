@@ -54,6 +54,9 @@ public class ClienteTest extends AbstractBaseUnitTest {
 //		List<Cliente> clientes = serviceFactory.getClienteService().listar();
 		Assert.assertNotNull(clientes);
 		Assert.assertTrue(clientes.size() >= 0);
+		Cliente c = clienteService.obtener(5L);
+		if (c.getTipo().equals("juridica"))
+			System.out.println(c.getTipo());
 		for (Cliente cliente : clientes) {
 			System.out.println(cliente.getNombre());
 			

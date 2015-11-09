@@ -8,8 +8,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -117,6 +115,8 @@ public class VentaController implements Serializable {
 		this.idArticulo = idArticulo;
 	}
 	
+	
+	
 	public String login() {
 		empleado = serviceFactory.getEmpleadoService().buscarLogin(empleado);
 		
@@ -137,6 +137,7 @@ public class VentaController implements Serializable {
 		}
 
 		facesContext.addMessage(null, facesMessage);
+//		facesContext.
 		return paginaResultado;
 	}
 
@@ -198,8 +199,6 @@ public class VentaController implements Serializable {
 	public void modificarPrecio(ValueChangeEvent event) {
 		try {
 			Long idArt = (Long) event.getNewValue();
-//			VentaService srv = new VentaService();
-//			Articulo a = srv.consultarArticulo(idArt);
 			Articulo a = serviceFactory.getArticuloService().obtener(idArt);
 			precio = a.getPrecio();
 			subtotal = precio * cant;
@@ -240,21 +239,29 @@ public class VentaController implements Serializable {
 	}
 
 	public String doGrabar(){
-//		mensaje = "";
+		paginaResultado = "ventas";
 		try {
 			carrito.setCliente(idCliente);
 //			carrito.setEmpleado(empleado.getId());
-//			carrito.setEmpleado();
-//			VentaService srv = new VentaService();
-//			srv.grabarVenta(carrito);
 			serviceFactory.getVentaService().grabarVenta(carrito);
-			carrito.clear();
-//			mensaje = "Proceso ok.";
+			
+			Cliente cliente = serviceFactory.getClienteService().obtener(idCliente);
+			if (cliente.getTipo().equals("natural"))
+				paginaResultado = "/paginas/modulos/principal/boleta";
+
+			if (cliente.getTipo().equals("juridica"))
+				paginaResultado = "/paginas/modulos/principal/factura";
+
+//			carrito.clear();
 		} catch (Exception e) {
-//			mensaje = e.getMessage();
 			e.printStackTrace();
 		}
-		return "ventas";
+		return paginaResultado;
+	}
+	
+	public String doVolver(){
+		carrito.clear();
+		return "/paginas/modulos/principal/ventas";
 	}
 
 }

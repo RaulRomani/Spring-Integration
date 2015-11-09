@@ -13,7 +13,10 @@
 </h:head>
 <h:body>
 
-		<ui:include src="/plantilla/cabecera.xhtml"/>
+		<ui:include src="/plantilla/cabeceraVenta.xhtml"/>
+		<h:form>
+		<p> <h:commandLink value="Salir" action="#{ventaController.doSalir}"/> </p>
+		</h:form>
 		<h2>Ventas</h2>
 		<p:messages />
 		
@@ -35,13 +38,13 @@
 				</tr>
 				<tr>
 					<td>
-						<h:selectOneMenu 
+						<p:selectOneMenu 
 							value="#{ventaController.idArticulo}"
 							onchange="submit();"
 							valueChangeListener="#{ventaController.modificarPrecio}">
 							<f:selectItem itemLabel="Seleccione" itemValue="" />
 							<f:selectItems  value="#{ventaController.articulos}"/>
-						</h:selectOneMenu>
+						</p:selectOneMenu>
 					</td>
 					<td>
 						<h:outputText value="#{ventaController.precio}">
@@ -109,7 +112,7 @@
 					<f:facet name="header">
 						<h:outputText value="Acción" />
 					</f:facet>
-<!-- 					<h:commandLink value="Eliminar" action="#{ ventaController.doEliminarItem( r.id ) }" /> -->
+					<h:commandLink value="Eliminar" action="#{ ventaController.doEliminarItem( r.id ) }" />
 				</h:column>
 			</h:dataTable>
 				
@@ -117,6 +120,18 @@
 		
 			<h:panelGrid columns="3">
 
+				<h:outputLabel value="Consumo:"/>
+				<h:outputText value="#{ventaController.carrito.consumo}">
+					<f:convertNumber pattern="###,##0.00"/>
+				</h:outputText>
+				<h:outputText />
+				
+				<h:outputLabel value="Descuento:"/>
+				<h:outputText value="#{ventaController.carrito.descuento}">
+					<f:convertNumber pattern="###,##0.00"/>
+				</h:outputText>
+				<h:outputText />
+				
 				<h:outputLabel value="Importe:"/>
 				<h:outputText value="#{ventaController.carrito.importe}">
 					<f:convertNumber pattern="###,##0.00"/>

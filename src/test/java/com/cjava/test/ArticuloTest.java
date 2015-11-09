@@ -26,7 +26,7 @@ public class ArticuloTest extends AbstractBaseUnitTest {
 	public void registrar() {
 		//En el mapeo hibernate mediante anotaciones esta id automatico, ERROR SI SE PONE
 //		Long id = new Long(2);
-		Articulo articulo = new Articulo("ART_08","Microfono",  100D,20L);
+		Articulo articulo = new Articulo("ART_10","Menu Familiar",  150D,20L);
 		articuloService.registrar(articulo);
 		Assert.assertNotNull(articulo.getId());
 	}
