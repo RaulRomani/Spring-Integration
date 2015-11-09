@@ -98,7 +98,7 @@ INSERT INTO ARTICULO(art_codigo,art_nombre,art_precio,art_stock) VALUES
 ('ART_01','Menu Familiar',150.0,25),
 ('ART_02','Ceviche',30.0,30),
 ('ART_03','Chicharron',15.0,40),
-('ART_04','Chicha Morada',5.0,80),
+('ART_04','Chicha Morada',5.0,80);
 
 INSERT INTO CLIENTE(cli_nombre,cli_tipo) VALUES
 ('Larriega Oscar','juridica'),
